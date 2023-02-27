@@ -13,20 +13,27 @@ namespace Torres_de_Hanoi
         public int Top { get; set; }
         public String Top { get; set; }        
         */
+
+        public int Top { get; set; }
+
         /* TODO: Elegir tipo de Elementos
         public Disco[] Elementos { get; set; }
         public List<Disco> Elementos { get; set; }
         */
 
+        public List<Disco> Elementos { get; set; }
+
         /* TODO: Implementar métodos */
         public Pila()
         {
-
+            Size = 0;
+            Top = 0;
+            Elementos =  new list<Disco>();
         }
 
         public void push(Disco d)
         {
-
+            
         }
 
         public Disco pop()
