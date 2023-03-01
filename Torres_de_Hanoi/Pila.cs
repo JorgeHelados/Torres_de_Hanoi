@@ -9,42 +9,64 @@ namespace Torres_de_Hanoi
     class Pila
     {
         public int Size { get; set; }
-        /* TODO: Elegir tipo de Top
         public int Top { get; set; }
-        public String Top { get; set; }        
-        */
-
-        public int Top { get; set; }
-
-        /* TODO: Elegir tipo de Elementos
-        public Disco[] Elementos { get; set; }
         public List<Disco> Elementos { get; set; }
-        */
 
-        public List<Disco> Elementos { get; set; }
 
         /* TODO: Implementar métodos */
-        public Pila()
+        public Pila()  // pila vacía
         {
             Size = 0;
             Top = 0;
-            Elementos =  new list<Disco>();
+            Elementos = new List<Disco>();
         }
 
-        public void push(Disco d)
-        {
+        public Pila(int n){  //pila que dependiendo de del numero q pongas va a crear pilas de discos hasta n
             
+            Size = n;
+            Elementos = new List<Disco>(); 
+
+            for(int i=n; i > 0; i--){
+
+                Disco disco = new Disco(); //crear disco vacío
+                Disco.Valor(n-i);       // Dar valor al disco
+                Elementos.Add(disco);   //Anyadir disco a la pila
+            }
+            Top = Elementos.Last().Valor;
         }
 
-        public Disco pop()
-        {
-            return null;
+        public void push(Disco d){
+            if(d.Valor > Elementos.Last().Valor){
+                Console.Write("No se puede hacer el push ");
+            }
+
+            else{
+                Elementos.Add(d);  //anyade el disco 
+                Size = Elementos.Count(); // Cuenta todos los eleementos 
+                Top = Elementos.Last().Valor; //selecciona el último elemento de la lista
+            }
+        }
+
+        public Disco pop(){
+            if(Elementos.Count() == 0){
+                Console.Write("No se puede hacer el pop ");
+            }
+
+            else{
+                Elementos.Last().pop();
+                Size = Elementos.Count();
+                Top = Elementos.Last().Valor;
+            }
+           
         }                
 
-        public bool isEmpty()
-        {
-            return true;
+        public bool isEmpty(){
+            if(Elementos.Count() == 0){
+                return true;
+            }
+            else{
+                return false;
+            }
         }
-
     }
 }
